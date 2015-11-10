@@ -110,3 +110,4 @@ static void *avutil_lib;
 static void *avcodec_lib;
 static void *avformat_lib;
 static void *swscale_lib;
+static void *swresample_lib;

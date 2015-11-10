@@ -21,7 +21,7 @@
  * Contains hand-rolled interfaces
  */
 
-#include "jjmpeg-jni.c"
+#include "jjmpeg-jni.h"
 
 //#define d(x) x; fflush(stdout)
 #define d(x)
@@ -57,7 +57,7 @@ static int (*dsws_scale)(struct SwsContext *context, const uint8_t* const srcSli
 			 int srcSliceY, int srcSliceH, uint8_t* const dst[], const int dstStride[]);
 
 static int (*davpicture_fill)(AVPicture *picture, uint8_t *ptr,
-			      enum PixelFormat pix_fmt, int width, int height);
+			      enum AVPixelFormat pix_fmt, int width, int height);
 
 static int64_t (*dav_rescale_q)(int64_t a, AVRational bq, AVRational cq);
 static void * (*dav_malloc)(int size);

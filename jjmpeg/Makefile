@@ -33,7 +33,7 @@ bin_distfiles=$(jar_distfiles) \
 
 .PHONY: webstart all native src
 
-all: jar
+all: native
 
 tar: src_tar bin_tar
 
@@ -58,7 +58,9 @@ bin_tar: jar
 
 jar: dist/jjmpeg.jar
 
-dist/jjmpeg.jar: classes/classes
+dist/jjmpeg.jar: 
+	cp src/au/notzed/jjmpeg/AVAbstract.java.original src/au/notzed/jjmpeg/AVAbstract.java
+	make classes/classes
 	mkdir -p dist
 	jar cf dist/jjmpeg.jar $(jar_distfiles) -C classes au/notzed/jjmpeg
 
@@ -70,6 +72,12 @@ classes/classes:
 
 native: dist/jjmpeg.jar
 	( cd native ; make )
+	cp native/mswin-amd64/AVAbstract.java src/au/notzed/jjmpeg/AVAbstract.java
+	classes/classes
+	cp src/au/notzed/jjmpeg/AVAbstract.java.original src/au/notzed/jjmpeg/AVAbstract.java
+	mkdir -p dist
+	jar cf dist/jjmpeg.jar $(jar_distfiles) -C classes au/notzed/jjmpeg
+	cp native/mswin-amd64/jjmpeg.dll dist/jjmpeg.dll
 
 webstart:
 	( cd webstart ; make )
