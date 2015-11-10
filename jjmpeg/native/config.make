@@ -14,13 +14,16 @@ jjmpeg_jar = jjmpeg-natives-$(TARGET).jar
 JDK_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
 
 # for the webstart stuff
-jar=$(JDK_HOME)/bin/jar
-jarsigner=$(JDK_HOME)/bin/jarsigner
+#jar=$(JDK_HOME)/bin/jar
+jar = jar
+#jarsigner=$(JDK_HOME)/bin/jarsigner
+jarsigner=jarsigner
 keystore=$(SRC)/../webstart/jjmpeg.jks
 keypass=jjmpegpass
 
 # binaries
-javah=$(JDK_HOME)/bin/javah
+#javah=$(JDK_HOME)/bin/javah
+javah=javah
 # override stupid distribution defaults of interactive rm
 rm=/bin/rm
 
